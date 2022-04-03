@@ -1,0 +1,32 @@
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltip-text {
+    transition: opacity 0.2s;
+    opacity: 0;
+
+    width: max-content;
+    background-color: black;
+    color: #ddd;
+    text-align: left;
+    padding: 1rem;
+    border-radius: 6px;
+
+    top: 90%;
+    left: 0;
+    margin-left: calc((14pt * -5.75) - 4rem); /* calc(fontSize * (charCount / 8) - padding) */
+
+    position: absolute;
+    z-index: 1;
+
+    visibility: hidden;
+}
+
+.tooltip:hover .tooltip-text {
+    transition-delay: 0.1s;
+    transition: opacity 0.2s;
+    visibility: visible;
+    opacity: 1;
+}

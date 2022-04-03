@@ -1,41 +1,7 @@
 /*
  Implementation for various utilities on the files site.
  */
-
-$(document).ready(function () {
-    $('[data-toggle=tooltip]').tooltipster({
-        theme: 'tooltipster-shadow',
-        position: 'bottom',
-        animation: 'grow'
-    });
-    $('[data-toggle=popup]').tooltipster({
-        theme: 'tooltipster-shadow',
-        position: 'bottom',
-        animation: 'grow',
-        contentAsHTML: true,
-        interactive: true
-    });
-    $('.download-list .download-links li').each(function () {
-        if ($(this).find('.info-tooltip').length > 0) {
-            var info = $(this).children('.info-tooltip');
-            $(this).children('.info-link').tooltipster('content', info.html());
-        }
-    });
-    $('.info-container').each(function () {
-        if ($(this).find('.info-tooltip').length > 0) {
-            var info = $(this).children('.info-tooltip');
-            var link = $(this).children('.info-link');
-            link.tooltipster('content', info.html());
-            ['delay', 'position', 'animation', 'speed'].forEach(function (key) {
-                if (link.attr('tooltipster-' + key) !== undefined)
-                    link.tooltipster('option', key, link.attr('tooltipster-' + key))
-            })
-        }
-    });
-
-});
-
-window.onload = function () {
+window.onload = function() {
     if (location.hostname != 'files.minecraftforge.net') {
         var find = 'files.minecraftforge.net'
         var replace = location.hostname

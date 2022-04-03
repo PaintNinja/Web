@@ -183,12 +183,14 @@
                                     {%- set branch = None %}
                                 {%- endif %}
                                 {%- if branch %}
+                                <div class="tooltip">
                                     <a class="info-link" data-toggle="popup" title="{{ branch }}">
                                         <i class="fa fa-bug marker-branch" aria-hidden="true"></i>
                                     </a>
-                                    <div class="info-tooltip">
+                                    <div class="tooltip-text">
                                         <strong>Branch:</strong> {{ branch }}
                                     </div>
+                                </div>
                                 {%- endif %}
                             </td>
                             <td class="download-time" title="{{ version.timestamp|formatdate}}">{{ version.timestamp|humanformatdate}}</td>
@@ -202,24 +204,26 @@
                                                 <a href="{{ url_prefix_cls }}{{ repository_base }}{{ info.relative_path }}">
                                                     <i class="fa download-classifier classifier-{{ class }}"></i> {{ class|default("Mod", true)|capitalize }}
                                                 </a>&nbsp;
-                                                <a class="info-link" data-toggle="popup" {% if url_prefix_cls %}href="{{ repository_base }}{{ info.relative_path }}" title="Direct Download"{% endif %}>
-                                                    <i class="fa fa-info-circle" aria-hidden="true"></i>
-                                                </a>
-                                                <div class="info-tooltip">
-                                                    <strong>MD5:</strong> {{ info.md5 }}<br>
-                                                    <strong>SHA1:</strong> {{ info.sha1 }}
-                                                    {%- if class == 'dev' or class == 'deobf' %}
-                                                        <br><strong>Gradle:</strong> "{{ artifact.group }}:{{ artifact.name }}:{{ version.version }}:dev"
-                                                    {%- endif %}
-                                                    {%- if (class == 'src' or class == 'mdk') and artifact.group == 'net.minecraftforge' and artifact.name == 'forge' %}
-                                                        <br><strong>Gradle:</strong> '{{ mc_version }}-{{ version.version }}{% if version.branch %}-{{ version.branch }}{% endif %}'
-                                                    {%- endif %}
-                                                    {%- if url_prefix_cls %}
-                                                        <br><a href="{{ repository_base }}{{ info.relative_path }}">(Direct Download)</a>
-                                                    {%- endif %}
-                                                    {%- if md.blurbs and md.blurbs[class] %}
-                                                        {{ md.blurbs[class] }}
-                                                    {%- endif %}
+                                                <div class="tooltip">
+                                                    <a class="info-link" {% if url_prefix_cls %}href="{{ repository_base }}{{ info.relative_path }}" title="Direct Download"{% endif %}>
+                                                        <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                                        <div class="tooltip-text">
+                                                            <strong>MD5:</strong> {{ info.md5 }}<br>
+                                                            <strong>SHA1:</strong> {{ info.sha1 }}
+                                                            {%- if class == 'dev' or class == 'deobf' %}
+                                                                <br><strong>Gradle:</strong> "{{ artifact.group }}:{{ artifact.name }}:{{ version.version }}:dev"
+                                                            {%- endif %}
+                                                            {%- if (class == 'src' or class == 'mdk') and artifact.group == 'net.minecraftforge' and artifact.name == 'forge' %}
+                                                                <br><strong>Gradle:</strong> '{{ mc_version }}-{{ version.version }}{% if version.branch %}-{{ version.branch }}{% endif %}'
+                                                            {%- endif %}
+                                                            {%- if url_prefix_cls %}
+                                                                <br><a href="{{ repository_base }}{{ info.relative_path }}">(Direct Download)</a>
+                                                            {%- endif %}
+                                                            {%- if md.blurbs and md.blurbs[class] %}
+                                                                {{ md.blurbs[class] }}
+                                                            {%- endif %}
+                                                        </div>
+                                                    </a>
                                                 </div>
                                             </li>
                                         {%- endif %}
