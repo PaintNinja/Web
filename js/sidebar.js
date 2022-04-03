@@ -2,12 +2,6 @@
  Implementation for sidebars used on the Forge sites.
  */
 $(document).ready(function () {
-    $('.sidebar-sticky').Stickyfill();
-    $('.scroll-pane').jScrollPane({
-        autoReinitialise: true,
-        verticalGutter: 0,
-        hideFocus: true
-    });
     $('.open-sidebar').click(function (e) {
         $('.sidebar-sticky').addClass('active-sidebar');
         $('body').addClass('sidebar-active');
