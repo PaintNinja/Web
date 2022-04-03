@@ -22,12 +22,14 @@ def createJsTask(name, files) {
 }
 
 createJsTask('filesCurse', [
+    "${projectDir}/js/utils.js",
     "${projectDir}/js/sidebar.js",
     "${projectDir}/js/theme-switch-toggle.js",
     "${projectDir}/js/curse-ads.js",
     "${projectDir}/js/files.js"
 ])
 createJsTask('filesGoogle', [
+    "${projectDir}/js/utils.js",
     "${projectDir}/js/sidebar.js",
     "${projectDir}/js/theme-switch-toggle.js",
     "${projectDir}/js/google-ads.js",

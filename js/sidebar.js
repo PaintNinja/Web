@@ -2,17 +2,6 @@
  Implementation for sidebars used on the Forge sites.
  */
 $(document).ready(function () {
-    $('.open-sidebar').click(function (e) {
-        $('.sidebar-sticky').addClass('active-sidebar');
-        $('body').addClass('sidebar-active');
-        e.preventDefault();
-    });
-    $('.close-sidebar').click(function (e) {
-        $('.sidebar-sticky').removeClass('active-sidebar');
-        $('body').removeClass('sidebar-active');
-        e.preventDefault();
-    });
-    // Collapsible elements implementation
     $('.collapsible,.nav-collapsible').each(function () {
         var item = $(this);
         var toggle = item.parent().find('> .toggle-collapsible');
@@ -63,3 +52,16 @@ $(document).ready(function () {
         });
     });
 });
+
+docReady(function() {
+    document.querySelector(".open-sidebar").onclick = function(e) {
+        document.querySelector('.sidebar-sticky').classList.add('active-sidebar')
+        document.body.classList.add('sidebar-active')
+        e.preventDefault()
+    }
+    document.querySelector(".close-sidebar").onclick = function(e) {
+        document.querySelector('.sidebar-sticky').classList.remove('active-sidebar')
+        document.body.classList.remove('sidebar-active')
+        e.preventDefault()
+    }
+})
